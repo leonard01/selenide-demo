@@ -2,6 +2,7 @@ package selenide.whatsonchain;
 
 import com.codeborne.selenide.*;
 import com.codeborne.selenide.junit.TextReport;
+import com.codeborne.selenide.selector.ByAttribute;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
@@ -39,7 +40,13 @@ public class BsvExplorer {
         $(By.id("woc-header-graph")).find(By.className("label-container")).shouldBe(visible);
         int numberOfContainers = $(By.id("woc-header-graph")).$$(".label-container").size();
         assert numberOfContainers == 12;
+        $(By.cssSelector("a[target='_blank']"),1).shouldBe(visible).shouldHave(
+                visible.text("#702630")
+        );
 
+        $(By.cssSelector("a[target='_blank']"),2).shouldBe(visible).shouldHave(
+                visible.text("#702629")
+        );
     }
 
 }
